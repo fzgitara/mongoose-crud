@@ -27,7 +27,7 @@ module.exports = {
         transaction.out_date = new Date()
         transaction.due_date = new Date().setDate(transaction.out_date.getDate()+transaction.days)
         transaction.in_date = in_date
-        transaction.fine = (transaction.in_date - transaction.due_date) * 1000
+        transaction.fine = Math.ceil((transaction.in_date - transaction.due_date)/(1000*3600*24)) * 1000
         transaction.booklist = booklist
         transaction.save()
         .then(newTransaction => {
